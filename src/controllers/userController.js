@@ -36,7 +36,7 @@ export const postJoin = async (req, res, next) => {
       // middelware는 현재 정보를 다음 middleware로 넘겨준다.
       next();
     } catch (error) {
-      console.log(error);
+      req.flash("error", error.message);
       res.redirect(routes.home);
     }
   }
@@ -51,13 +51,12 @@ export const getLogin = (req, res) => {
 export const postLogin = passport.authenticate("local", {
   failureRedirect: routes.login,
   successRedirect: routes.home,
-  successFlash: "Welcome",
   failureFlash: "Can't log in. Check email and/or password",
 });
 
 export const githubLogin = passport.authenticate("github", {
   successFlash: "Welcome",
-  failureFlash: "Can't log in at this time",
+  failureFlash: "Can't log in.",
 });
 
 // cb는 passport로부터 제공되는 함수로, 호출 시 pasport에게 사용자가 성공적으로
@@ -92,8 +91,7 @@ export const postGithubLogin = (req, res) => {
 
 export const googleLogin = passport.authenticate("google", {
   scope: ["profile", "email"],
-  successFlash: "Welcome",
-  failureFlash: "Can't log in at this time",
+  failureFlash: "Can't log in.",
 });
 
 export const googleLoginCallback = async (_, __, profile, cb) => {
