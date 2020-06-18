@@ -17,7 +17,7 @@ import "./models/Post";
 import "./models/Sketchfab";
 import "./models/Process";
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 5000;
 const CREDENTIALS = Buffer.from(
   `${process.env.SKETCHFAB_CLIENT_ID}:${process.env.SKETCHFAB_CLIENT_SECRET}`
 ).toString("base64");
