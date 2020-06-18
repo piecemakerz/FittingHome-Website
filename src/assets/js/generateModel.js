@@ -11,7 +11,6 @@ const handleGenerationStart = async (event) => {
   formdata.append("userid", userid);
   const response = await fetch("https://fitting-home.fun25.co.kr/upload", {
     method: "POST",
-    mode: "cors",
     body: formdata,
   });
   const responseText = await response.text();
