@@ -33,10 +33,7 @@ export const home = async (req, res) => {
           { _id: post._id },
           { thumbnail: process.env.DEFAULT_MODEL_THUMBNAIL }
         );
-      } else if (
-        post.thumbnail === process.env.DEFAULT_MODEL_THUMBNAIL ||
-        post.thumbnail === process.env.DEFAULT_MODEL_THUMBNAIL2
-      ) {
+      } else {
         getModelDataPromises.push(getModelData(post.sketchfabModelLocation));
         postId.push(post._id);
       }
