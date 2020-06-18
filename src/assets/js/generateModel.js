@@ -9,16 +9,21 @@ const handleGenerationStart = async (event) => {
   const formdata = new FormData();
   formdata.append("file", file, file.name);
   formdata.append("userid", userid);
-  const response = await fetch("https://fitting-home.fun25.co.kr/upload", {
-    method: "POST",
-    body: formdata,
-  });
-  const responseText = await response.text();
-  if (response.status === 200) {
-    alert(responseText);
-    window.location.href = `${window.location.origin}/me`;
-  } else {
-    alert(responseText);
+  try {
+    const response = await fetch("https://fitting-home.fun25.co.kr/upload", {
+      method: "POST",
+      mode: "cors",
+      body: formdata,
+    });
+    const responseText = await response.text();
+    if (response.status === 200) {
+      alert(responseText);
+      window.location.href = `${window.location.origin}/me`;
+    } else {
+      alert(responseText);
+    }
+  } catch (error) {
+    console.log(error);
   }
 };
 
