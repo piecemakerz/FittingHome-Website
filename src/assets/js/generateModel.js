@@ -9,7 +9,7 @@ const handleGenerationStart = async (event) => {
   const formdata = new FormData();
   formdata.append("file", file, file.name);
   formdata.append("userid", userid);
-  const response = await fetch("http://fitting-home.fun25.co.kr/upload", {
+  const response = await fetch("https://fitting-home.fun25.co.kr/upload", {
     method: "POST",
     body: formdata,
   });
