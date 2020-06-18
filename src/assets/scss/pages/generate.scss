@@ -1,0 +1,29 @@
+#modelGeneration-form {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  div {
+    display: block;
+    width: 100%;
+    max-width: 700px;
+    &:not(:last-child) {
+      margin-bottom: 25px;
+    }
+  }
+  input[type="button"] {
+    background-color: #d35400;
+    color: white;
+    cursor: pointer;
+  }
+  .userId {
+    label {
+      display: inline-block;
+      font-weight: 600;
+      margin-right: 10px;
+      margin-bottom: 15px;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+extends layouts/main
+include mixins/postBlock
+
+block content
+    .search__header
+        h3 Searching for #{searchingBy}
+    .search__posts
+        if posts.length === 0
+            h5 No Posts Found
+        each item in posts
+            +postBlock(item)

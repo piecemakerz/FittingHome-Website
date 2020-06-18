@@ -1,0 +1,10 @@
+extends layouts/main
+
+block content
+    .form-container
+        form(action=routes.editPost(post.id), method="post")
+            input(type="text", placeholder="Title", name="title", value=post.title)
+            textarea(name="description", placeholder="Description")=post.description
+            input(type="submit", value="Update Post")
+        a.form-container__link(href=routes.deletePost(post.id)) 
+            button.delete Delete Post 

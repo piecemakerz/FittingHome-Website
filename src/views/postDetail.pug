@@ -1,0 +1,36 @@
+extends layouts/main
+//- include mixins/modelViewer
+
+block head
+    script(type="text/javascript", src="https://static.sketchfab.com/api/sketchfab-viewer-1.7.1.js")
+    link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+block content
+    .post-detail__container
+        iframe(src="", id="api-frame", sandbox="allow-scripts allow-same-origin allow-popups allow-forms", allow="autoplay; fullscreen; vr", mozallowfullscreen="true", webkitallowfullscreen="true", allowtransparency="true", ui_controls="false")
+        .post__info
+            if loggedUser && post.user.id === loggedUser.id
+                a#editPost(href=routes.editPost(post.id)) 
+                    button Edit Post
+            .post__postContents
+                h5.post__title=post.title
+                p.post__description=post.description
+                .post__author
+                    |Uploaded by 
+                    a(href=routes.userDetail(post.user.id))=post.user.name
+            .post__buttonContainer#jsModelDownloadButtonContainer
+                button#jsOriginalDownloadBtn
+                    i(class="fa fa-download") 
+                        |  Original Download
+                button#jsGltfDownloadBtn
+                    i(class="fa fa-download") 
+                        |  GLTF Download
+                button#jsUsdzDownloadBtn
+                    i(class="fa fa-download") 
+                        |  USDZ Download
+    script.
+        var modelId = !{JSON.stringify(post.sketchfabId)};
+        var processing = !{JSON.stringify(processing)};
+        if(processing !== "SUCCEEDED"){
+            alert("Model Upload in progress.");
+            window.location.href = window.location.origin;
+        }

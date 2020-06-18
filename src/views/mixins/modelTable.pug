@@ -1,0 +1,16 @@
+mixin modelTable(models)
+    .modelTable
+        table#models
+            th Model Id
+            th Model Name
+            th Upload Date
+            th Delete
+            each item in models
+                tr.row
+                    td.modelId=item._id
+                    td.modelName 
+                        a(href=item.modelLocation)
+                            span=item.modelName
+                    td.uploadDate=item.uploadDate
+                    td.deleteModel
+                        button X

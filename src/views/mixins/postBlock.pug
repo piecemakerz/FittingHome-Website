@@ -1,0 +1,11 @@
+//- mixin은 웹사이트에 계속 반복되는 코드를 복사-붙여넣기 하지 않고 재활용하는 방법이다.
+//-  mixin은 pug에서의 함수라고 생각하면 된다.
+//-  각각 다른 정보를 가지지만 같은 구조를 가지는 데이터를 표시하기 위해 코드를 캡슐화할 수 있다.
+mixin postBlock(post = {})
+    .postBlock
+        a(href=routes.postDetail(post.id))
+            //- TODO: Add Obj Model Thumbnail
+            img(src=post.thumbnail, alt=`${post.id}_thumbnail`)
+            h4.postBlock__title=post.title
+            div.postBlock__description=(post.description.length >= 120) ? (post.description.substr(0, 120) + '...') : (post.description)
+            

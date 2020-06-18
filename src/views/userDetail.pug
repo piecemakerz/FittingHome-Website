@@ -1,0 +1,49 @@
+extends layouts/main
+include mixins/postBlock
+include mixins/processTable
+include mixins/modelTable
+
+block content
+    .user-profile
+        if loggedUser && user.id === loggedUser.id
+            .user-profile__info
+                .user-profile__header
+                    img.u-avatar(src=user.avatarUrl)
+                    h4.profile__username=user.name
+                .user-profile__btns
+                    a(href=`/users${routes.editProfile}`)
+                        button ✏️ Edit Profile
+                    a(href=`/users${routes.changePassword}`)
+                        button 🔒 Change Password
+                    a#withdraw(href=routes.withdraw)
+                        button ❌ Withdraw
+            .user-profile__table
+                .user-profile__processes.table-wrapper
+                    div.tableName 모델 생성 현황
+                    div.tableDescription * 모든 모델 생성 현황은 하루가 지나면 삭제됩니다.
+                    +processTable(process)
+                .user-profile__models.table-wrapper
+                    div.tableName 내 모델 목록
+                    div.tableDescription 내가 업로드 하거나 생성한 모델들을 다운로드 하거나 삭제할 수 있습니다.
+                    +modelTable(user.models)
+        else
+            .user-profile__info
+                .user-profile__header
+                    img.u-avatar(src=user.avatarUrl)
+                    h4.profile__username=user.name
+    .uploaded-posts
+        div.posts__title=`내 포스팅 목록: ${user.posts.length}`
+        .uploaded-posts__containter
+            each item in user.posts
+                +postBlock(item)
+    script.
+        var withdrawBtn = document.getElementById("withdraw");
+        withdrawBtn.addEventListener("click", handleWithdrawConfirm, false);
+
+        function handleWithdrawConfirm(event){
+            if(!confirm("Are you sure?")){
+                event.preventDefault();
+            }
+        }
+        
+        

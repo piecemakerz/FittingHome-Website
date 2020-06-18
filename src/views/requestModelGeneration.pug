@@ -1,0 +1,12 @@
+extends layouts/main
+
+block content
+    .form-container#modelGeneration-form
+        .fileUpload
+            label(for="file") Images File
+            input#modelGeneration__file(type="file", name="imagesFile", required=true, accept=".zip,.rar,.7zip")
+        .userId
+            label(for="userid") User Id
+            input#modelGeneration__userId(type="text", placeholder="userid", name="userid", value=loggedUser._id, readonly="readonly")
+        input#modelGeneration__submit(type="button", value="Start Model Generation")
+    

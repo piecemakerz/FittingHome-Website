@@ -1,0 +1,34 @@
+//- 모든 페이지들의 토대가 되는 layout 파일
+
+include ../mixins/message
+
+doctype html
+html
+    head
+        link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU", crossorigin="anonymous")
+        title #{pageTitle} | #{siteName}
+        // webpack을 통해 호환 가능한 코드로 변환된 css 파일 사용
+        link(rel="stylesheet", href="/static/styles.css")
+        block head
+    body
+        if messages.error
+            +message({
+                type:'error',
+                text:messages.error
+            })
+        else if messages.info
+            +message({
+                type:'info',
+                text:messages.info
+            })
+        else if messages.success
+            +message({
+                type:'success',
+                text:messages.success
+            })
+        include ../partials/header
+        main
+            block content
+        include ../partials/footer
+        // webpack을 통해 호환 가능한 코드로 변환된 javascript 파일 사용
+        script(src="/static/main.js")

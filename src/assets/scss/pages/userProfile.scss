@@ -1,0 +1,93 @@
+.user-profile {
+  width: 100%;
+  .user-profile__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 30px;
+    .user-profile__header {
+      img {
+        width: 200px;
+        border-radius: 50%;
+      }
+      .profile__username {
+        margin: 20px 0px;
+        font-size: 30px;
+        text-align: center;
+      }
+    }
+    .user-profile__btns {
+      a {
+        display: block;
+        width: 300px;
+        margin-bottom: 20px;
+      }
+    }
+  }
+  .user-profile__table {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 100px;
+    .table-wrapper {
+      width: 45%;
+      .tableName {
+        font-size: 25px;
+        margin-bottom: 10px;
+      }
+      .tableDescription {
+        font-size: 15px;
+        margin-bottom: 30px;
+        opacity: 0.8;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table,
+      th,
+      td {
+        border: 2px solid $black;
+        text-align: center;
+      }
+      th,
+      td {
+        vertical-align: middle;
+        padding: 10px;
+      }
+      th {
+        height: 40px;
+        font-size: 20px;
+        font-weight: 600;
+      }
+      td {
+        height: 30px;
+        font-size: 18px;
+      }
+      .deleteModel button {
+        all: unset;
+        cursor: pointer;
+        color: $red;
+        font-weight: 600;
+        font-size: 20px;
+      }
+    }
+    .user-profile__models {
+      width: 50%;
+    }
+  }
+}
+
+.uploaded-posts {
+  width: 100%;
+  .posts__title {
+    font-size: 25px;
+  }
+  .uploaded-posts__containter {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(150px, 1fr));
+    grid-gap: 30px;
+    margin: 40px 0px;
+  }
+}

@@ -1,0 +1,26 @@
+//- partials는 페이지의 일부분을 의미한다.
+//- 웹사이트의 분리하고 싶은 컴포넌트를 분리해 사용할 수 있다.
+header.header
+    .header__wrapper
+        .header__column
+            a(href=routes.home)
+                img(src="/defaultImages/logo.png", alt="Fitting Home")
+        .header__column
+            form(action=routes.search, method="get")
+                input(type="text", placeholder="Searching by term...", name="term")
+        .header__column
+            ul 
+                if !loggedUser
+                    li
+                        a(href=routes.join) Join
+                    li
+                        a(href=routes.login) Log In
+                else
+                    li
+                        a(href=`${routes.posts}${routes.upload}`) Upload
+                    li
+                        a(href=`${routes.api}${routes.requestModelGeneration}`) Generate
+                    li
+                        a(href=routes.me) Profile
+                    li
+                        a(href=routes.logout) Log Out

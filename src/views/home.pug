@@ -1,0 +1,12 @@
+//- extend는 해당 템플릿을 확장하여 사용할 것이고,
+//- 동시에 해당 템플릿에 추가적인 것을 더할 것임을 나타낸다.
+//- 코드 전체를 복사-붙여넣기 한다고 생각하면 된다.
+
+extends layouts/main
+include mixins/postBlock
+
+
+block content
+    .home-posts
+        each item in posts
+            +postBlock(item)

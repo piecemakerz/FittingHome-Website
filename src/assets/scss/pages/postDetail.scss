@@ -1,0 +1,51 @@
+.post-detail__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .post__info {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 40px;
+    #editPost {
+      margin-top: 20px;
+      display: block;
+      align-self: flex-end;
+    }
+    .post__postContents {
+      align-self: flex-start;
+      .post__title {
+        font-size: 30px;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+      .post__description {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+      .post__author {
+        a:active,
+        a:visited {
+          color: #d35400;
+        }
+        a {
+          font-weight: 600;
+          color: #d35400;
+        }
+        margin-bottom: 40px;
+      }
+    }
+    .post__buttonContainer {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      button {
+        margin: 0px 20px;
+      }
+    }
+  }
+}

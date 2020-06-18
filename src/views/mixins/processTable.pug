@@ -1,0 +1,13 @@
+mixin processTable(process)
+    .processTable
+        table#processes
+            th File Name
+            th Step
+            th Status
+            th Started At
+            each item in process
+                tr.row
+                    td.fileName=item.fileName
+                    td.step=item.step
+                    td.status=item.status
+                    td.date=item.date

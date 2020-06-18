@@ -1,0 +1,17 @@
+// Babel은 최신의 Javascript 코드를 많은 환경에서 지원 가능한
+// 이전의 Javascript 코드로 변환해주는 Javascript Compiler이다.
+
+// Babel을 Node.js 상에서 사용하기 위해 Babel node를 설치한다.
+// npm install @babel/node
+// npm install @babel/core
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry",
+        "corejs": 3
+      }
+    ]
+  ]
+}

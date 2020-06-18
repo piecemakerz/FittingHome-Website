@@ -1,0 +1,18 @@
+.postBlock {
+  img {
+    max-width: 100%;
+    margin-bottom: 10px;
+    width: 100%;
+    overflow: hidden;
+  }
+  .postBlock__title {
+    color: #444444;
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .postBlock__description {
+    color: #444444;
+    font-size: 20px;
+  }
+}

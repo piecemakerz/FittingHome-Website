@@ -1,0 +1,20 @@
+.social-login {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  button {
+    a:active,
+    a:visited {
+      color: white;
+    }
+    width: 100%;
+    margin-bottom: 20px;
+    a {
+      display: block;
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+}
