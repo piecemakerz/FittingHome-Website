@@ -24,7 +24,20 @@ import apiRouter from "./routers/apiRouter";
 import "./passport";
 
 const app = express();
-
+app.use(cors());
+app.use(function(req, res, next) {
+  res.setHeader(
+    "Access-Control-Allow-Origin",
+    "https://florismeininger.herokuapp.com"
+  );
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader(
+    "Access-Control-Allow-Headers",
+    "X-Requested-With,content-type"
+  );
+  res.setHeader("Access-Control-Allow-Credentials", true);
+  next();
+});
 const CookieStore = MongoStore(session);
 
 app.use(helmet());
@@ -42,7 +55,6 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan("dev"));
-app.use(cors());
 
 app.use(
   session({
