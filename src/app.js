@@ -24,10 +24,10 @@ import apiRouter from "./routers/apiRouter";
 import "./passport";
 
 const app = express();
-app.use(cors());
 const CookieStore = MongoStore(session);
 
 app.use(helmet());
+app.use(cors());
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 
