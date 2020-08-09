@@ -4,9 +4,9 @@
   "description": "Wetube Practice Project",
   "author": "piecemakerz",
   "dependencies": {
+    "@babel/cli": "^7.8.4",
     "@babel/core": "^7.10.2",
     "@babel/node": "^7.10.1",
-    "@babel/cli": "^7.8.4",
     "@babel/polyfill": "^7.10.1",
     "@babel/preset-env": "^7.8.4",
     "@babel/runtime": "^7.9.2",
@@ -28,6 +28,7 @@
     "express-session": "^1.17.0",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "form-data": "^3.0.0",
+    "formidable": "^1.2.2",
     "fs": "0.0.1-security",
     "get-blob-duration": "^1.1.0",
     "helmet": "^3.21.3",
@@ -69,6 +70,7 @@
     "prestart": "npm run build"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.10.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-config-prettier": "^6.10.0",

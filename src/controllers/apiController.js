@@ -1,8 +1,14 @@
 /* eslint-disable import/prefer-default-export */
+import fetch from "node-fetch";
+import dotenv from "dotenv";
+import formidable from "formidable";
+import FormData from "form-data";
+import fs from "fs";
 import { getModelDownloadLink } from "../api";
 import Post from "../models/Post";
 import Model from "../models/Model";
 import { s3 } from "../middlewares";
+dotenv.config();
 
 export const postDownloadModel = async (req, res) => {
   const {
@@ -33,6 +39,35 @@ export const postDownloadModel = async (req, res) => {
 
 export const getRequestModelGeneration = (req, res) => {
   res.render("requestModelGeneration", { pageTitle: "Generate Model" });
+};
+
+export const postRequestModelGeneration = async (req, res) => {
+  const form = formidable({ multiples: true });
+
+  form.parse(req, async (err, fields, files) => {
+    if (err) {
+      console.log("error occurred in formidable");
+      res.status(500).send(err.message);
+    } else {
+      try {
+        const file = fs.readFileSync(files.file.path);
+        const formdata = new FormData();
+        formdata.append("file", file, files.file.name);
+        formdata.append("userid", fields.userid);
+        const response = await fetch(
+          "https://fitting-home.fun25.co.kr/upload",
+          {
+            method: "POST",
+            body: formdata,
+          }
+        );
+        res.send(response);
+      } catch (error) {
+        console.log("error occured in try", error);
+        res.status(500).send(error.message);
+      }
+    }
+  });
 };
 
 export const getRequestModelDelete = async (req, res) => {

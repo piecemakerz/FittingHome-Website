@@ -5,19 +5,22 @@ const submitBtn = document.getElementById("modelGeneration__submit");
 
 const handleGenerationStart = async () => {
   const file = imagesInput.files[0];
+  console.log(file);
   const userid = userId.value;
   const formdata = new FormData();
   formdata.append("file", file, file.name);
   formdata.append("userid", userid);
 
-  const response = await fetch("https://fitting-home.fun25.co.kr/upload", {
+  const response = await fetch(`${window.location.origin}/api/generate`, {
     method: "POST",
     body: formdata,
   });
-  const responseText = await response.text();
-  alert(responseText);
+
   if (response.status === 200) {
+    alert("Model Generation Started");
     window.location.href = `${window.location.origin}/me`;
+  } else {
+    alert("Model Generation Failed");
   }
 };
 

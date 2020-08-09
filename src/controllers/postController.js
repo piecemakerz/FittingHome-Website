@@ -27,6 +27,8 @@ export const home = async (req, res) => {
     const getModelDataPromises = [];
     const postId = [];
 
+    console.log(req.user ? req.user.id : "not logged in");
+
     posts.forEach(async (post) => {
       if (!post.thumbnail) {
         await Post.findOneAndUpdate(
@@ -174,9 +176,7 @@ export const postDetail = async (req, res) => {
   } = req;
 
   try {
-    const post = await Post.findById(id)
-      .populate("model")
-      .populate("user");
+    const post = await Post.findById(id).populate("model").populate("user");
 
     const accessToken = getAccessToken();
 
@@ -238,7 +238,10 @@ export const postEditPost = async (req, res) => {
 
   try {
     const post = await Post.findById(id);
-    await post.updateOne({ title, description, updateDate: Date.now });
+    await Post.findOneAndUpdate(
+      { _id: id },
+      { title, description, updateDate: Date.now() }
+    );
     await editSketchfabPost(
       post.sketchfabModelLocation,
       `${title}__${uuidv4()}`,
@@ -246,6 +249,7 @@ export const postEditPost = async (req, res) => {
     );
     res.redirect(routes.postDetail(id));
   } catch (error) {
+    console.log(error);
     res.redirect(routes.home);
   }
 };

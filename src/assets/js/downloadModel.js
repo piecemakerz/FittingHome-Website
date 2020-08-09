@@ -69,17 +69,17 @@ function init() {
   const client = new Sketchfab(iframe);
 
   client.init(modelId, {
-    success: (onSuccess = (api) => {
+    success: function onSuccess(api) {
       api.start();
       api.addEventListener("viewerready", () => {
         console.log("Viewer is ready");
       });
-    }),
-    error: (onError = () => {
+    },
+    error: function onError() {
       if (processing === "SUCCEEDED") {
         alert("Viewer not ready yet");
       }
-    }),
+    },
   });
 
   origBtn.addEventListener("click", handleOrigBtnClick);

@@ -135,7 +135,6 @@ export const getMe = async (req, res) => {
       .populate("posts")
       .populate("models");
     const process = await Process.find({ userId: req.user.id });
-    console.log(process);
     res.render("userDetail", { pageTitle: "User Detail", user, process });
   } catch (error) {
     res.redirect(routes.home);
@@ -152,7 +151,6 @@ export const userDetail = async (req, res) => {
       .populate("posts")
       .populate("models");
     const process = await Process.find({ userId: id });
-    console.log(process);
     res.render("userDetail", { pageTitle: "User Detail", user, process });
   } catch (error) {
     req.flash("error", "User not found");
